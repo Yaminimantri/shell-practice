@@ -30,7 +30,7 @@ for package in $@
 do
     dnf list installed $package &>>$log_file
     if [ $? -ne 0 ]; then
-        dnf install $paackage -y &>>$log_file
+        dnf install $package -y &>>$log_file
         validate $? "$package"
     else
         echo -e "$package already exist..$Y skipping $N"
