@@ -1,0 +1,38 @@
+
+userid=$(id -u)
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
+logs_floder="var/log/shell-script"
+script_name=$( echo $0 \ cut -d "." -f1 )
+log_file="$log_floder / $script_name.log"
+
+mkdir -p $logs_floder
+echo "script started executed at: $(date)"
+
+if [ $userid -ne 0 ]; then
+    echo "ERROR: please run this script with root privelege"
+    exit 1
+fi
+
+validate(){
+    if [ $1 -ne 0 ]; then
+        echo -e "installing $2...$R failure $N"
+        exit 1
+    else
+        echo -e "installong $2...$G succuss $N"
+    fi
+}
+
+for package in $@
+do
+    dnf list installed $package &>>$log_file
+    if [ $? -ne 0 ]; then
+        dnf install $paackage -y &>>$log_file
+        validate $? "@package"
+    else
+        echo -e "@package already exist..$Y skipping $N"
+    fi
+done
