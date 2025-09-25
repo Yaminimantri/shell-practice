@@ -7,7 +7,7 @@ N="\e[0m"
 
 logs_floder="var/log/shell-script"
 script_name=$( echo $0 | cut -d "." -f1 )
-log_file="$log_floder / $script_name.log"
+log_file="$log_floder/$script_name.log"
 
 mkdir -p $logs_floder
 echo "script started executed at: $(date)"
