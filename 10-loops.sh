@@ -31,8 +31,8 @@ do
     dnf list installed $package &>>$log_file
     if [ $? -ne 0 ]; then
         dnf install $paackage -y &>>$log_file
-        validate $? "@package"
+        validate $? "$package"
     else
-        echo -e "@package already exist..$Y skipping $N"
+        echo -e "$package already exist..$Y skipping $N"
     fi
 done
