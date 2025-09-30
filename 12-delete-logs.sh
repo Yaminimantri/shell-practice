@@ -27,4 +27,4 @@ do
     echo "Deleting the file: $filepath"
 
 
-done <<< $FILES_TO_DELET
+done <<< $FILES_TO_DELETE
