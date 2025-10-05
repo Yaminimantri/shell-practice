@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 DISK_USAGE=$(df -hT | grep -v Filesystem)
@@ -17,3 +18,9 @@ done <<< $DISK_USAGE
 echo -e "Message Body: $MESSAGE"
 
 sh mail.sh "mantri.yamini2018@gmail.com" "High Disk Usage Alert" "High Disk Usage" "$MESSAGE" "$IP_ADDRESS" "Yamini"
+
+# TO_ADDRESS=$1
+# SUBJECT=$2
+# ALERT_TYPE=$3
+# MESSAGE_BODY=$4
+# IP_ADDRESS=$5
